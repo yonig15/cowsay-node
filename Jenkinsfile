@@ -9,7 +9,8 @@ pipeline {
         }
         stage('install dependencies'){
             steps{
-             sh 'npm ci'
+                sh 'export PATH="$PATH:/usr/local/bin"'
+                sh 'npm ci'
             }
         }
         stage('run test'){
