@@ -4,12 +4,17 @@ pipeline {
     stages {
         stage('checkout'){
             steps{
-             echo 'checkout'
+             checkout scm
             }
         }
         stage('install dependencies'){
             steps{
-             echo 'install dependencies'
+             sh 'npm install'
+            }
+        }
+        stage('run test'){
+            steps{
+             echo 'npm test'
             }
         }
     }
