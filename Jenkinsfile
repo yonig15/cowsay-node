@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'cowsay-node/ops/workspace'
+                sh 'cowsay-node/ops/workspace/docker-compose.yml'
                 sh 'docker-compose up -d'
             }
         }  
