@@ -3,10 +3,14 @@ pipeline {
 
     stages {
         stage('checkout'){
-            echo 'checkout'
+            steps{
+             echo 'checkout'
+            }
         }
         stage('install dependencies'){
-            echo 'install dependencies'
+            steps{
+             echo 'install dependencies'
+            }
         }
     }
 }
