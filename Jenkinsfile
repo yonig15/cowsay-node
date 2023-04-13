@@ -2,14 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('build') {
-            steps {
-                sh 'npm install'
-            }
-        }  
-
+        stage('checkout'){
+            echo 'checkout'
+        }
+        stage('install dependencies'){
+            echo 'install dependencies'
+        }
     }
 }
+
 
 
 //  stage('SonarQube Analysis') {
