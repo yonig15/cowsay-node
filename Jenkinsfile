@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'ops/workspace'
+                sh 'ops/workspace/docker-compose.yml'
                 sh 'docker-compose up -d'
             }
         }  
