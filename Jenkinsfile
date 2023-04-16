@@ -18,7 +18,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                   def scannerHome = tool 'SonarQube 4.8.0.2856';
+                   def scannerHome = tool 'SonarQube Scanner 4.8.0.2856';
                     withSonarQubeEnv('my-default-config') {
                         sh "${scannerHome}/bin/sonar-scanner"
                     }
