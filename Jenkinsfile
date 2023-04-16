@@ -4,8 +4,9 @@ pipeline {
     stages {  
         stage('install dependencies'){
             steps{  
-                sh 'export PATH="$PATH:/usr/local/bin"'
+                dir('./code'){
                 sh 'npm install'
+                }
             }
         }
         stage('run start'){
