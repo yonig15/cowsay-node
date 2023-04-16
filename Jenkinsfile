@@ -11,14 +11,15 @@ pipeline {
             }
         }
         stage('run start') {
-            dir('./code') {
-                steps {
+            steps {
+                dir('./code') {
                     sh 'npm start'
                 }
             }
         }
     }
 }
+
 
 
 // sh 'export PATH="$PATH:/usr/local/bin"'
