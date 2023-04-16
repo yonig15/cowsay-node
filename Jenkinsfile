@@ -1,16 +1,15 @@
 pipeline {
     agent any
-
-    stages {  
-        stage('install dependencies'){
-            steps{  
-                dir('./code'){
-                sh 'npm install'
+    stages {
+        stage('install dependencies') {
+            steps {
+                dir('./code') {
+                    sh 'npm install'
                 }
             }
         }
-        stage('run start'){
-            steps{
+        stage('run start') {
+            steps {
                 sh 'npm start'
             }
         }
