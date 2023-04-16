@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Declarative: Checkout SCM') {
-            steps {
-                checkout scm
-            }
-        }
         stage('install dependencies') {
             steps {
                 dir('./code') {
@@ -40,15 +35,6 @@ pipeline {
 
 
 
-        // stage('install dependencies') {
-        //     steps {
-        //         dir('./code') {
-        //             sh 'node --version'
-        //             sh 'ls'
-        //             sh 'npm install'
-        //         }
-        //     }
-        // }
  // stage('run Start') {
         //     steps {
         //           dir('./code') {
