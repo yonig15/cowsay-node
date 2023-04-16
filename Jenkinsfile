@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Declarative: Checkout SCM') {
+            steps {
+                checkout scm
+            }
+        }
         stage('install dependencies') {
             steps {
                 dir('./code') {
@@ -13,7 +18,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    def scannerHome = tool 'SonarQube 4.8.0.2856';
+                   def scannerHome = tool 'SonarQube 4.8.0.2856';
                     withSonarQubeEnv('my-default-config') {
                         sh "${scannerHome}/bin/sonar-scanner"
                     }
@@ -30,6 +35,7 @@ pipeline {
         }
     }
 }
+
 
 
 
