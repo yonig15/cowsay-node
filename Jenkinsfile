@@ -13,12 +13,9 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    dir('./code') {
-                        sh 'npm audit'
-                        sh 'npm audit fix'
-                        sh 'npm install sonarqube-scanner'
-                        sh 'node_modules/.bin/sonar-scanner'
-                    }
+                    def scannerHome = tool 'SonarQube 4.8.0.2856';
+                    withSonarQubeEnv('my-default-config') {
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
         }
