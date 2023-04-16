@@ -12,8 +12,14 @@ pipeline {
         }
         stage('run start') {
             steps {
-                dir('./code') {
-                    sh 'npm start'
+                script {
+                    def counter = 0
+                    while (counter < 10) {
+                        dir('./code') {
+                            sh 'npm start'
+                        }
+                        counter++
+                    }
                 }
             }
         }
