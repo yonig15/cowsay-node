@@ -14,10 +14,8 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     dir('./code') {
-                        sh 'node --version'
-                        sh 'ls'
-                        set -x
-                        sh 'npm install'
+                        sh 'npm install sonarqube-scanner'
+                        sh 'node_modules/.bin/sonar-scanner'
                     }
                 }
             }
