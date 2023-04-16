@@ -10,12 +10,12 @@ pipeline {
                 }
             }
         }
-        stage('run Build') {
+        stage('SonarQube Analysis') {
             steps {
-                  dir('./code') {
-                      sh 'npm build'
-                  }
-                }
+            withSonarQubeEnv('SonarQube') {
+            sh 'npm install sonarqube-scanner'
+            sh 'node_modules/.bin/sonar-scanner'
+            }
             }
         }
     post{
@@ -30,6 +30,15 @@ pipeline {
 
 
 
+
+ // stage('run Start') {
+        //     steps {
+        //           dir('./code') {
+        //               sh 'npm Start'
+        //           }
+        //         }
+        //     }
+        // }
 
 // sh 'export PATH="$PATH:/usr/local/bin"'
 //  stage('SonarQube Analysis') {
