@@ -1,29 +1,24 @@
 pipeline {
     agent any
     stages {
-        stage('install dependencies') {
+        stage('SonarQube Analysis') {
             steps {
-                dir('./code') {
-                    sh 'node --version'
-                    sh 'ls'
-                    sh 'npm install'
+                withSonarQubeEnv('SonarQube') {
+                    dir('./code') {
+                        sh 'node --version'
+                        sh 'ls'
+                        sh 'npm install'
+                    }
                 }
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-            withSonarQubeEnv('SonarQube') {
-            sh 'npm install sonarqube-scanner'
-            sh 'node_modules/.bin/sonar-scanner'
-            }
-            }
-        }
-    post{
-        success{
+    }
+    post {
+        success {
             echo 'success'
         }
-        failure{
-           echo 'fail' 
+        failure {
+            echo 'fail' 
         }
     }
 }
@@ -31,6 +26,15 @@ pipeline {
 
 
 
+        // stage('install dependencies') {
+        //     steps {
+        //         dir('./code') {
+        //             sh 'node --version'
+        //             sh 'ls'
+        //             sh 'npm install'
+        //         }
+        //     }
+        // }
  // stage('run Start') {
         //     steps {
         //           dir('./code') {
