@@ -14,6 +14,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     dir('./code') {
+                        sh 'npm audit'
                         sh 'npm audit fix'
                         sh 'npm install sonarqube-scanner'
                         sh 'node_modules/.bin/sonar-scanner'
