@@ -10,13 +10,18 @@ pipeline {
                 }
             }
         }
-        stage('SonarQube Analysis') {
+       stage('SonarQube Analysis') {
             steps {
                 script {
                     withSonarQubeEnv('SonarQube') {
-                        def scannerHome = tool 'SonarQube';
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    }
+                        def scannerHome = tool 'SonarQube'
+                            sh """ ${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=sqp_cfcfb19d0043646a586248a39288a969e87f2994 \
+                            -Dsonar.login=admin \
+                            -Dsonar.password=5245 \
+                            -Dsonar.sources=/${env.WORKSPACE}/code """
+
+                        } 
                 }
             }
         }
