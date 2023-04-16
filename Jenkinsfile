@@ -10,21 +10,24 @@ pipeline {
                 }
             }
         }
-        stage('run start') {
+        stage('run Build') {
             steps {
-                script {
-                    def counter = 0
-                    while (counter < 10) {
-                        dir('./code') {
-                            sh 'npm start'
-                        }
-                        counter++
-                    }
+                  dir('./code') {
+                      sh 'npm build'
+                  }
                 }
             }
         }
+    post{
+        success{
+            echo 'success'
+        }
+        failure{
+           echo 'fail' 
+        }
     }
 }
+
 
 
 
@@ -42,5 +45,20 @@ pipeline {
 //   stage('checkout'){
 //             steps{
 //              checkout scm
+//             }
+//         }
+
+
+//  stage('run start') {
+//             steps {
+//                 script {
+//                     def counter = 0
+//                     while (counter < 10) {
+//                         dir('./code') {
+//                             sh 'npm start'
+//                         }
+//                         counter++
+//                     }
+//                 }
 //             }
 //         }
