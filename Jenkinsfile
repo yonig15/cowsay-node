@@ -11,8 +11,10 @@ pipeline {
             }
         }
         stage('run start') {
-            steps {
-                sh 'npm start'
+            dir('./code') {
+                steps {
+                    sh 'npm start'
+                }
             }
         }
     }
