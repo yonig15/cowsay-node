@@ -6,7 +6,7 @@ pipeline {
                 dir('./code') {
                     sh 'node --version'
                     sh 'ls'
-                    sh 'npm install'
+                    sh 'npm ci'
                 }
             }
         }
