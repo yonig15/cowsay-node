@@ -1,33 +1,34 @@
 pipeline {
     agent any
 
-    stages {
-        stage('checkout'){
-            steps{
-             checkout scm
-            }
-        }
+    stages {  
         stage('install dependencies'){
-            steps{
-                sh 'export PATH="$PATH:/usr/local/bin"'
-                sh 'npm ci'
+            steps{  
+                sh 'npm install'
             }
         }
-        stage('run test'){
+        stage('run start'){
             steps{
-             echo 'npm test'
+                sh 'npm start'
             }
         }
     }
 }
 
 
-
+// sh 'export PATH="$PATH:/usr/local/bin"'
 //  stage('SonarQube Analysis') {
 //             steps {
 //             withSonarQubeEnv('SonarQube') {
 //             sh 'npm install sonarqube-scanner'
 //             sh 'node_modules/.bin/sonar-scanner'
 //             }
+//             }
+//         }
+
+
+//   stage('checkout'){
+//             steps{
+//              checkout scm
 //             }
 //         }
