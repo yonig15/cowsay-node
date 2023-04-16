@@ -1,12 +1,22 @@
 pipeline {
     agent any
     stages {
+        stage('install dependencies') {
+            steps {
+                dir('./code') {
+                    sh 'node --version'
+                    sh 'ls'
+                    sh 'npm install'
+                }
+            }
+        }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     dir('./code') {
                         sh 'node --version'
                         sh 'ls'
+                        set -x
                         sh 'npm install'
                     }
                 }
