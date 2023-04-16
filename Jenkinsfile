@@ -4,6 +4,11 @@ pipeline {
         nodejs 'NodeJS'
     }
     stages {
+         stage('checkout'){
+            steps{
+             checkout scm
+            }
+        }
         stage('install dependencies') {
             steps {
                 dir('./code') {
