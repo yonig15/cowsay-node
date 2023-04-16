@@ -13,8 +13,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    def scannerHome = tool 'SonarQube 4.8.0.2856';
-                    withSonarQubeEnv('my-default-config') {
+                    def scannerHome = tool 'SonarQube 4.8.0.2856'
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
@@ -25,7 +24,7 @@ pipeline {
             echo 'success'
         }
         failure {
-            echo 'fail' 
+            echo 'fail'
         }
     }
 }
