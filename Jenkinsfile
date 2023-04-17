@@ -21,7 +21,7 @@ pipeline {
        stage('SonarQube Analysis') {
             steps {
                 script {
-                    withSonarQubeEnv('SonarQube') {
+                    withSonarQubeEnv('Configure-SonarQube ') {
                         def scannerHome = tool 'SonarQube'
                             sh """ ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=sqp_cfcfb19d0043646a586248a39288a969e87f2994 \
